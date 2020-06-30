@@ -1,3 +1,4 @@
+[![GitHub](https://img.shields.io/badge/GitHub-noahp/configload-8da0cb?style=for-the-badge&logo=github)](https://github.com/noahp/configload)
 [![Code style:
 black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://github.com/ambv/black)
 [![GitHub Workflow
