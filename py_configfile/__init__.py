@@ -1,1 +1,1 @@
-from py_configfile import *
+from .py_configfile import *

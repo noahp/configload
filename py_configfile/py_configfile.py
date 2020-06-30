@@ -4,11 +4,10 @@ file formats.
 """
 
 
+import configparser
 import json
 import os
-
-import config
-import dataclass
+from dataclasses import dataclass
 
 try:
     import pyyaml
@@ -19,20 +18,24 @@ except ImportError:
     toml = None
 
 
-@dataclass.dataclass
+@dataclass
 class PyConfigFile:
     """
     PyConfigFile: subclass this and add your dataclass attributes, eg:
 
     from py_configfile import PyConfigFile
 
-    class MyConfigClass(py_configfile.PyConfigFile):
+    class MyConfigClass(PyConfigFile):
         foo: int = 1
         yolo: bool = True
 
     # then initialize:
     myconfig = MyConfigClass(configfile="settings.ini")
     """
+
+    configfiletypes = ("ini", "json")
+    if pyyaml:
+        configfiletypes = configfiletypes + ("yaml",)
 
     def __init__(self, configfile=None, configfiletype=None, *args, **kwargs):
 
@@ -41,16 +44,36 @@ class PyConfigFile:
 
         # now, optionally run the config file loader
         self.configfile = configfile
-        self.configfiletype = configfiletype
 
         if self.configfile:
-            pass
+            self.configfiletype = configfiletype or self.configfile_to_filetype(
+                self.configfile
+            )
+            raise NotImplementedError()
 
     @staticmethod
     def configfile_to_filetype(configfile):
         """Naive extension check to set configfiletype from path"""
-
-        pass
+        raise NotImplementedError()
 
     def config_file_loader(self):
-        pass
+        # for ini, catch and raise configparser.MissingSectionHeaderError
+
+        raise NotImplementedError()
+
+    def load_environment(self, prefix=""):
+        """
+        Load environment variables into the config.
+
+        They'll be of the form <prefix_><dataclass attribute>.upper(), eg:
+
+        class MyConfigClass(PyConfigFile):
+            user_setting: str = "heyo"
+
+        myconfig = MyConfigClass()
+
+        # this will load "USER_SETTING" variable from the environment, and
+        # convert it to the type of the dataclass attribute
+        myconfig.load_environment()
+        """
+        raise NotImplementedError()
