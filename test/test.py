@@ -1,6 +1,6 @@
 import dataclasses
 
-from py_configfile import PyConfigFile
+from configload import PyConfigFile
 
 
 class TestConfigFile(PyConfigFile):

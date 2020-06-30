@@ -28,7 +28,7 @@ class PyConfigFile:
     """
     PyConfigFile: subclass this and add your dataclass attributes, eg:
 
-    from py_configfile import PyConfigFile
+    from configload import PyConfigFile
 
     class MyConfigClass(PyConfigFile):
         foo: int = 1

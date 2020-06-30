@@ -1,11 +1,11 @@
 [![Code style:
 black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://github.com/ambv/black)
 [![GitHub Workflow
-Status](https://img.shields.io/github/workflow/status/noahp/py-configfile/main-ci?style=for-the-badge)](https://github.com/noahp/py-configfile/actions)
+Status](https://img.shields.io/github/workflow/status/noahp/configload/main-ci?style=for-the-badge)](https://github.com/noahp/configload/actions)
 [![PyPI
-version](https://img.shields.io/pypi/v/py-configfile.svg?style=for-the-badge)](https://pypi.org/project/py-configfile/)
+version](https://img.shields.io/pypi/v/configload.svg?style=for-the-badge)](https://pypi.org/project/configload/)
 [![PyPI
-pyversions](https://img.shields.io/pypi/pyversions/py-configfile.svg?style=for-the-badge)](https://pypi.python.org/pypi/py-configfile/)
+pyversions](https://img.shields.io/pypi/pyversions/configload.svg?style=for-the-badge)](https://pypi.python.org/pypi/configload/)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
@@ -18,16 +18,21 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 - [Config File Formats](#config-file-formats)
 
 <!-- omit in toc -->
-# py-configfile
+# configload
 
 Teeny package to support loading a dataclass from a config file (`.ini`,
 `.json`; optionally, with extensions `.yaml`, `.toml`).
+
+_Note: [dynaconf](https://github.com/rochacbruno/dynaconf) is a **much** more
+featureful implementation of a similar idea, so for anything serious it might be
+a better choice! see also [configloader](https://pypi.org/project/configloader/)
+for another similar implementation_
 
 ## Install
 
 ```bash
 # install with extras: support for yaml and toml (requires extra dependencies)
-pip install py-configfile[yaml,toml]
+pip install configload[yaml,toml]
 ```
 
 ## Usage
@@ -35,7 +40,7 @@ pip install py-configfile[yaml,toml]
 Instantiate a child class like so:
 
 ```python
-from py_configfile import PyConfigFile
+from configload import PyConfigFile
 
 class MyConfigClass(PyConfigFile):
     # setting defaults makes it simpler to instantiate
@@ -100,7 +105,7 @@ key_1 = { "nested_key": 123, }
 The `.ini` format has section markers (eg `[DEFAULT]`) as optional, but the
 python standard library configparser requires at least one section marker.
 
-This library (`py-configfile`) will _only_ parse keys from the `[DEFAULT]`
+This library (`configload`) will _only_ parse keys from the `[DEFAULT]`
 section, all other sections are ignored.
 
 If the ini file doesn't contain a `[DEFAULT]` section an error will be raised.

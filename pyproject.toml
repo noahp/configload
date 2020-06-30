@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "py-configfile"
+name = "configload"
 version = "0.1.0"
 description = "Map various config file formats to python dataclass"
 authors = ["Noah Pendleton <2538614+noahp@users.noreply.github.com>"]
