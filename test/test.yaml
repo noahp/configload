@@ -1,0 +1,4 @@
+str_key: "foo"
+int_key: 123
+float_key: 1.234
+boot_key: true

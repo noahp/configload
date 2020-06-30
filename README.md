@@ -12,14 +12,16 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 - [Install](#install)
 - [Usage](#usage)
 - [Limitations](#limitations)
-  - [`.ini` specific](#ini-specific)
+  - [Flat structure](#flat-structure)
+  - [Simple types only](#simple-types-only)
+  - [`.ini` default section](#ini-default-section)
 - [Config File Formats](#config-file-formats)
 
 <!-- omit in toc -->
 # py-configfile
 
 Teeny package to support loading a dataclass from a config file (`.ini`,
-`.json`, optionall with extensions `.yaml`, `.toml`).
+`.json`; optionally, with extensions `.yaml`, `.toml`).
 
 ## Install
 
@@ -49,6 +51,8 @@ myconfig = MyConfigClass(configfile="settings.ini")
 
 ## Limitations
 
+### Flat structure
+
 To keep things consistent between ini and structured formats, and due to the
 limitations of dataclasses, really only top-level (flat) structure is suited to
 this.
@@ -71,7 +75,27 @@ nested values will have to use dict semantics, i.e.:
 myconfig.top_level_key["nested_key"]
 ```
 
-### `.ini` specific
+### Simple types only
+
+Only simple dataclass types (`str`, `int`, `list`, `dict`, etc) are supported,
+and ini format only supports scalar types.
+
+_**TODO**_ support may be added for more complex data types by using
+`ast.literal_eval` to convert string repr of a data structure in an ini key
+value, but this is:
+
+- kinda sketchy, error prone
+- might not be that useful anyway 🤷
+
+Example might be:
+
+```ini
+[DEFAULT]
+# python string repr of a dictionary
+key_1 = { "nested_key": 123, }
+```
+
+### `.ini` default section
 
 The `.ini` format has section markers (eg `[DEFAULT]`) as optional, but the
 python standard library configparser requires at least one section marker.
