@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "py-configfile"
+version = "0.1.0"
+description = "Map various config file formats to python dataclass"
+authors = ["Noah Pendleton <2538614+noahp@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
