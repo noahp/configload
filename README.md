@@ -20,6 +20,8 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 <!-- omit in toc -->
 # configload
 
+**NOTE: not functional yet!!!**
+
 Teeny package to support loading a dataclass from a config file (`.ini`,
 `.json`; optionally, with extensions `.yaml`, `.toml`).
 

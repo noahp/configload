@@ -2,4 +2,5 @@
 /.eggs
 /build
 /dist
+/.tox
 __pycache__

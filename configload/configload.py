@@ -14,7 +14,7 @@ yaml = None  # pylint: disable=invalid-name
 toml = None  # pylint: disable=invalid-name
 
 try:
-    import pyyaml
+    import pyyaml  # pylint: disable=unused-import
 except ImportError:
     pass
 try:
@@ -44,7 +44,7 @@ class PyConfigFile:
     if tomlkit:
         configfiletypes = configfiletypes + ("toml",)
 
-    def __init__(self, configfile=None, configfiletype=None, *args, **kwargs):
+    def __init__(self, *args, configfile=None, configfiletype=None, **kwargs):
 
         # first initialize data class
         super(PyConfigFile).__init__(*args, **kwargs)
@@ -60,8 +60,7 @@ class PyConfigFile:
                 raise UserWarning(f"Unsupported file type {self.configfiletypes}")
             raise NotImplementedError()
 
-    @staticmethod
-    def configfile_to_filetype(configfile):
+    def configfile_to_filetype(self, configfile):
         """Naive extension check to set configfiletype from path"""
         ext = None
         try:
@@ -76,15 +75,21 @@ class PyConfigFile:
 
     @staticmethod
     def ini_loader(configfile):
-        raise NotImplementedError("yaml not enabled")
+        """parse ini, return dict"""
+        assert configparser
+        raise NotImplementedError(f"TODO parse {configfile}")
 
     @staticmethod
     def json_loader(configfile):
-        raise NotImplementedError("yaml not enabled")
+        """parse json, return dict"""
+        assert json
+        raise NotImplementedError(f"TODO parse {configfile}")
 
     @staticmethod
     def toml_loader(configfile):
-        raise NotImplementedError("yaml not enabled")
+        """parse toml, return dict"""
+        if not toml:
+            raise NotImplementedError(f"toml not enabled for {configfile}")
 
     @staticmethod
     def yaml_loader(configfile):
@@ -94,10 +99,11 @@ class PyConfigFile:
         with open(configfile, "r") as infile:
             return yaml.load(infile, Loader=yaml.FullLoader)
 
-    def config_file_loader(self):
+    def _config_file_loader(self):
+        """Load the config file"""
         # for ini, catch and raise configparser.MissingSectionHeaderError
 
-        raise NotImplementedError()
+        raise NotImplementedError("TODO")
 
     def load_environment(self, prefix=""):
         """
