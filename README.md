@@ -2,11 +2,11 @@
 [![Code style:
 black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://github.com/ambv/black)
 [![GitHub Workflow
-Status](https://img.shields.io/github/workflow/status/noahp/configload/main-ci?style=for-the-badge)](https://github.com/noahp/configload/actions)
+Status](https://img.shields.io/github/workflow/status/noahp/configload/main-ci?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/noahp/configload/actions)
 [![PyPI
-version](https://img.shields.io/pypi/v/configload.svg?style=for-the-badge)](https://pypi.org/project/configload/)
+version](https://img.shields.io/pypi/v/configload.svg?style=for-the-badge&logo=PyPi&logoColor=white)](https://pypi.org/project/configload/)
 [![PyPI
-pyversions](https://img.shields.io/pypi/pyversions/configload.svg?style=for-the-badge)](https://pypi.python.org/pypi/configload/)
+pyversions](https://img.shields.io/pypi/pyversions/configload.svg?style=for-the-badge&logo=python&logoColor=white&color=ff69b4)](https://pypi.python.org/pypi/configload/)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
